@@ -1,0 +1,203 @@
+{
+  "main": {
+    "id": "267e1768dbd7c766",
+    "type": "split",
+    "children": [
+      {
+        "id": "04306733532c468a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "52dee931dbc9dce4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "readme.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "readme"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5ff0e544569cc3d7",
+    "type": "split",
+    "children": [
+      {
+        "id": "4843fc68a49bb729",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "711e09e2ec798a97",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "f87d713c39ed467d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "131bde7b4615be53",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "394526a9de8309c0",
+    "type": "split",
+    "children": [
+      {
+        "id": "e70fda0e8b6c7267",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6d65545c81ce0237",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "tryhackme/BasicPentesting/readme.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for readme"
+            }
+          },
+          {
+            "id": "be4982ee5eb8fc41",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "tryhackme/BasicPentesting/readme.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from readme"
+            }
+          },
+          {
+            "id": "c250268d4496c014",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "8e6131085602598c",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "eeb4de928fa42f1f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "tryhackme/BasicPentesting/readme.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of readme"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "52dee931dbc9dce4",
+  "lastOpenFiles": [
+    "natas/natas19/readme.md",
+    "natas/natas19/new.go",
+    "natas/natas18/readme.md",
+    "natas/natas19/main.go",
+    "natas/natas19",
+    "natas/natas17/readme.md",
+    "natas/natas18/main.go",
+    "natas/natas18",
+    "natas/Untitled.md",
+    "tryhackme/BasicPentesting/readme.md",
+    "tryhackme/BasicPentesting/readme.md.md",
+    "readme.md",
+    "tryhackme/BasicPentesting",
+    "tryhackme"
+  ]
+}

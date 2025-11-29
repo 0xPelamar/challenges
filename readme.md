@@ -5,7 +5,8 @@ Welcome to my repository of cybersecurity challenge solutions. This project docu
 ## 📂 Challenge List
 Below is the list of challenges I have solved so far. Click the name to view the detailed write-ups and code.
 
-| Challenge Series | Platform | Focus | Status |
-| :--- | :--- | :--- | :--- |
-| **[📂 Natas](./natas)** | OverTheWire | Server-Side Web Security | ✅ In Progress |
-| *(More to come)* | ... | ... | ⏳ Pending |
+| Challenge Series              | Platform    | Status        |
+| :---------------------------- | :---------- | :------------ |
+| **[ Natas](./natas)**         | OverTheWire | ✅ In Progress |
+| **[ TryHackMe](./tryhackme)** | TryHackMe   | ✅ In Progress |
+|                               |             |               |
