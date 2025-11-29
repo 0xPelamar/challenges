@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "readme.md",
+                "file": "natas/level19/readme.md",
                 "mode": "source",
                 "source": false
               },
@@ -185,6 +185,13 @@
   },
   "active": "52dee931dbc9dce4",
   "lastOpenFiles": [
+    "readme.md",
+    "natas/level19/readme.md",
+    "natas/level19",
+    "natas/level18/readme.md",
+    "natas/level18",
+    "natas/level17/readme.md",
+    "natas/level17",
     "natas/natas19/readme.md",
     "natas/natas19/new.go",
     "natas/natas18/readme.md",
@@ -196,7 +203,6 @@
     "natas/Untitled.md",
     "tryhackme/BasicPentesting/readme.md",
     "tryhackme/BasicPentesting/readme.md.md",
-    "readme.md",
     "tryhackme/BasicPentesting",
     "tryhackme"
   ]

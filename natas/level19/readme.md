@@ -1,13 +1,13 @@
 - - -
 # 🚩 OverTheWire: Natas Wargame Solutions - Level 19
-Enter the username `aaaaaaaaaa` and the password `bbbbbbbbbb`
-    Cookie received: `...2d61616161616161616161`
-Enter username `bbbbbbbbbb` and password `aaaaaaaaaa`
-    Cookie received: `...2d62626262626262626262`
-    
-Comparing the two cookies reveals that the suffix changes to match the hexadecimal representation of the username provided (`2d` corresponds to `-`, 61 to `a`, and 62 to `b`).
+- Enter the username `aaaaaaaaaa` and the password `bbbbbbbbbb`
+	- Cookie received: `...2d61616161616161616161`
+- Enter username `bbbbbbbbbb` and password `aaaaaaaaaa`
+	- Cookie received: `...2d62626262626262626262`
+- Comparing the two cookies reveals that the suffix changes to match the hexadecimal
+  representation of the username provided (`2d` corresponds to `-`, 61 to `a`, and 62 to `b`).
 
-From this, the `PHPSESSID` format is deduced to be a sequential ID followed by the username, encoded in ASCII hex: {id}-{username}
+From this, the `PHPSESSID` format is deduced to be a sequential ID followed by the username, encoded in ASCII hex: `{id}-{username}`
 
 Password for next Level: `p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw`
 

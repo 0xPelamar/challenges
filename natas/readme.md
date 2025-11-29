@@ -11,5 +11,8 @@ Natas teaches the basics of **server-side web security**. Unlike other wargames 
 
 ## 📂 Solution Directory
 - **Levels 0-14**: [View Solutions](./level0-14)
-- **Level 15**: [View Solutions](./level15)
-- **Level 16**: [View Solutions](./level16)
+- **Level 15**: [View Solution](./level15)
+- **Level 16**: [View Solution](./level16)
+- **Level 17**: [View Solution](./level17)
+- **Level 18**: [View Solution](./level18)
+- **Level 19**: [View Solution](./level19)
