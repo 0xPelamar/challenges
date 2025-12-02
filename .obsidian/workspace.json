@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "natas/level19/readme.md",
+                "file": "natas/level25/readme.md",
                 "mode": "source",
                 "source": false
               },
@@ -185,8 +185,20 @@
   },
   "active": "52dee931dbc9dce4",
   "lastOpenFiles": [
-    "readme.md",
+    "natas/level24/readme.md",
+    "natas/level25/readme.md",
+    "natas/natas23/readme.md",
+    "natas/level25",
+    "natas/level24",
+    "natas/natas22/readme.md",
+    "natas/natas23",
+    "natas/level21/readme.md",
+    "natas/level20/readme.md",
+    "natas/natas22",
     "natas/level19/readme.md",
+    "natas/level21",
+    "natas/level20",
+    "readme.md",
     "natas/level19",
     "natas/level18/readme.md",
     "natas/level18",
@@ -195,15 +207,8 @@
     "natas/natas19/readme.md",
     "natas/natas19/new.go",
     "natas/natas18/readme.md",
-    "natas/natas19/main.go",
-    "natas/natas19",
     "natas/natas17/readme.md",
-    "natas/natas18/main.go",
-    "natas/natas18",
-    "natas/Untitled.md",
     "tryhackme/BasicPentesting/readme.md",
-    "tryhackme/BasicPentesting/readme.md.md",
-    "tryhackme/BasicPentesting",
-    "tryhackme"
+    "tryhackme/BasicPentesting/readme.md.md"
   ]
 }
